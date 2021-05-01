@@ -123,6 +123,7 @@ Option:`)
 
 		table := tablewriter.NewWriter(os.Stdout)
 		table.SetHeader(tableHeader)
+
 		datas := [][]string{}
 		for _, fe := range fes {
 			if fe.isNotExist == true {
@@ -144,9 +145,7 @@ Option:`)
 				datas = append(datas, data)
 			}
 		}
-		for _, v := range datas {
-			table.Append(v)
-		}
+		table.AppendBulk(datas)
 		table.Render()
 	}
 }
